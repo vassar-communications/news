@@ -12,6 +12,11 @@
 .u-lHeader {
     background: #fff url() no-repeat center;
 }
+.u-BreadCrumbs,
+.u-pageTitle {
+    display: block;
+    visibility: visible;
+}
 
 /* News Styles */
 .u-ArticleListItem__title {

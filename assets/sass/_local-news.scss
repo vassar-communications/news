@@ -12,8 +12,7 @@
 .u-lHeader {
     background: #fff url() no-repeat center;
 }
-.u-BreadCrumbs,
-.u-pageTitle {
+.u-BreadCrumbs {
     display: block;
     visibility: visible;
 }
@@ -24,11 +23,16 @@
     text-transform: none;
     margin-top: 0;
     font-weight: 600 !important;
+    margin-bottom: 0;
 }
 h3.u-Article__title {
     font-size: 3em;
     line-height: 1;
     margin-top: 0;
+}
+.u-ArticleListItem__label--dateline {
+    margin-bottom: .5em;
+    display: block;
 }
 .u-ArticleNavGroup__navButton--archive,
 .u-ArticleNavGroup__navButton--more,
@@ -53,6 +57,11 @@ h3.u-Article__title {
         padding: 0 4%;
         max-width: 18em;
     }
+    .u-BreadCrumbs--news {
+        margin-bottom: 1em;
+        padding: 0 0 1em;
+        width: 100%;
+    }
     .u-newsInner {
         .u-lMain {
             max-width: 55em;
@@ -61,14 +70,19 @@ h3.u-Article__title {
             padding: 0 4%;
             overflow: hidden;
         }
-        .u-lAside {
-            width: 100%;
-            float: none;
-        }
+        .u-lAside,
         .u-lContent {
             width: 100%;
             float: none;
         }
+    }
+    .u-newsInner.u-folderArchive {
+        .u-lAside,
+        .u-lContent {
+            width: 100%;
+            float: none;
+            padding: 0;
+        } 
     }
     .u-ArticleListItem {
         margin-bottom: 0;
@@ -104,6 +118,9 @@ h3.u-Article__title {
         width: 100%;
         margin-bottom: .5em;
     }
+    .u-NewsSidebar {
+        margin-bottom: 2em;
+    }
 }
 @media all and (min-width: 37.5em) {
     .u-ArticleGroup {
@@ -115,7 +132,7 @@ h3.u-Article__title {
         .u-lAside {
             width: 30%;
             float: right;
-            padding: .75em 0 0;
+            padding: 0;
         }
         .u-lContent {
             width: 70%;
@@ -205,6 +222,7 @@ h3.u-Article__title {
         color: #fff;
     }
 }
-.Share {
+.Share,
+.u-ArticleSidebarGroup--images {
     border-bottom: 1px dashed rgba(116, 102, 97, .3);
 }

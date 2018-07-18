@@ -2,8 +2,9 @@
 //error_reporting(E_ALL);
 return 
 array(
-    'phpErrorReporting' => E_ALL,
-    'siteID' => '26465',
+    //'phpErrorReporting' => E_ALL,
+    //'siteID' => '26465',
+    'siteName' => "News and Events",
     'siteDesignType' => 'academic',
     'vassarCollegeAppend' => '',
     // 'subSiteNavigationAdditional' => array('grandparent','All Exhibits'),
@@ -15,10 +16,11 @@ array(
     'vassarCollegeID' => $vassarCollegeIDHome,
     'searchNew' => true,
     // 'useRootNav' => true,
+    'useLocalNav' => true,
     'globalNav' => true,
     'siteNameFooter' => 'Vassar College',
     'officeLocationBuilding' => "",
-    'mastheadLink' => false,
+    'mastheadLink' => true,
     'newsKeywords' => 'Info',
     'globalFooter' => true,
 );

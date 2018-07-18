@@ -417,7 +417,6 @@ li {
 	.u-footMasthead,
 	.footerExtra {
 		display: inline-block;
-		width: 49%;
 	}
 	.u-footMasthead__siteName--link {
 		margin: 0 auto 0 0;
@@ -527,7 +526,7 @@ a.fn.org.url.u-VCard__fn.u-VCard__item.u-VCard__org.u-VCard__url:link,
 	background-size: cover;
 }
 .u-lFooter {
-	background: $linkColor url(../../../assets/images/about-footer-bg.jpg) no-repeat;
+	background: $linkColor url(../../../assets/images/global-footer-bg.jpg) no-repeat;
 	background-size: cover;
     border-top: .3em solid $fontColor;
 	color: #fff;

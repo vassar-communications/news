@@ -7,6 +7,10 @@ array(
     'siteName' => "News and Events",
     'siteDesignType' => 'academic',
     'vassarCollegeAppend' => '',
+    
+    
+    
+    
     // 'subSiteNavigationAdditional' => array('grandparent','All Exhibits'),
     'headingHierarchy' => true,
     'typekitID' => 'mvb3wrl',

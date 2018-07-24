@@ -3,7 +3,7 @@
 }
 @media screen {
     .u-lHeader {
-        padding: 3.5em !important;
+        padding: 1em 1em 2.75em !important;
     }
 }
 .u-Masthead__siteName--link {
@@ -11,10 +11,6 @@
 }
 .u-lHeader {
     background: #fff url() no-repeat center;
-}
-.u-BreadCrumbs {
-    display: block;
-    visibility: visible;
 }
 
 /* News Styles */
@@ -34,14 +30,13 @@ h3.u-Article__title {
     margin-bottom: .5em;
     display: block;
 }
-.u-ArticleNavGroup__navButton--archive,
-.u-ArticleNavGroup__navButton--more,
+.u-ArticleNavGroup__navButton,
 .u-NewsContactLink a h4 {
     text-align: center;
     font: normal $fontWeightNormal 1.75em/1 $sans-serif-condensed;
     text-transform: uppercase;
     letter-spacing: .03em;
-    padding: 0 .25em .19em;
+    padding: 0;
 }
 .Share {
     border-bottom: 1px dashed;
@@ -57,14 +52,16 @@ h3.u-Article__title {
         padding: 0 4%;
         max-width: 18em;
     }
-    .u-BreadCrumbs--news {
-        margin-bottom: 1em;
-        padding: 0 0 1em;
+    .u-BreadCrumbs.u-BreadCrumbs--news {
+        display: block;
+        visibility: visible;
+        padding-bottom: 1em;
+        margin-bottom: 1.5em;
         width: 100%;
     }
     .u-newsInner {
         .u-lMain {
-            max-width: 55em;
+            max-width: 65em;
             width: auto;
             margin: 0 auto 5%;
             padding: 0 4%;
@@ -109,14 +106,14 @@ h3.u-Article__title {
     }
     .u-ArticleNavGroup {
         text-align: center;
+        width: auto;
     }
-    .u-ArticleNavGroup__navButton--more,
-    .u-ArticleNavGroup__navButton--archive,
+    .u-ArticleNavGroup__navButton,
     .u-NewsContactLink a h4 {
-        display: block;
+        display: inline-block;
         float: none;
-        width: 100%;
-        margin-bottom: .5em;
+        width: inherit;
+        margin: 0 .5em .5em 0;
     }
     .u-NewsSidebar {
         margin-bottom: 2em;
@@ -151,17 +148,18 @@ h3.u-Article__title {
         width: 13em;
         margin: 0 2.5% 2.5% 0 !important;
     }
-    .u-ArticleNavGroup__navButton--more,
-    .u-ArticleNavGroup__navButton--archive,
+    .u-ArticleNavGroup__navButton,
     .u-NewsContactLink a h4 {
         display: inline;
         float: inherit;
         width: inherit;
-        margin-bottom: 0;
     }
     .u-lAside .Share li {
         width: 15%;
     }
+}
+.u-BreadCrumbs.u-BreadCrumbs--news {
+    border-bottom: 1px solid rgba(116, 102, 97, 0.3);
 }
 .u-ArticleListItem__link {
     transition: all .2s;
@@ -202,24 +200,30 @@ h3.u-Article__title {
         }
     }
 }
-.u-ArticleNavGroup__navButton--archive,
-.u-ArticleNavGroup__navButton--more,
+.u-NewsContactLink a {
+    border-bottom: none;
+}
+.u-ArticleNavGroup__navButton,
 .u-NewsContactLink a h4 {
-    background: $linkColor;
-    color: #fff;
-    border: 1px solid #fff;
+    background-color: transparent;
+    color: $linkColor;
+    border-bottom: 2px solid $linkColor !important;
+    background-color: transparent;
     &:visited {
-        background: $linkColor;
-        color: #fff;
+        color: $linkColor;
+        border-bottom: 2px solid $linkColor !important;
+        background-color: transparent;
     }
     &:hover,
     &:focus {
-        background: $linkColorHoverFocus;
-        color: #fff;
+        color: $linkColorHoverFocus;
+        border-bottom: 2px solid $linkColorHoverFocus !important;
+        background-color: transparent;
     }
     &:active {
-        background: $linkColorActive;
-        color: #fff;
+        color: $linkColorActive;
+        border-bottom: 2px solid $linkColorActive !important;
+        background-color: transparent;
     }
 }
 .Share,

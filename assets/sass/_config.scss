@@ -117,13 +117,13 @@ $u-Bio__contactData--color: inherit;
 
 /* Breadcrumbs  */
 
-$u-BreadCrumbs__item--font: .9em $sans-serif;
+$u-BreadCrumbs__item--font: $fontWeightRegular .9em/1 $sans-serif;
 
 $u-BreadCrumbs__item--dividerColor: $fontColor;
 
 $u-BreadCrumbs__item--linkColor: $linkColor;
 $u-BreadCrumbs__item--linkColorHoverFocus: $linkColorHoverFocus;
-$u-BreadCrumbs__item--linkColorVisited: $linkColorVisited;
+$u-BreadCrumbs__item--linkColorVisited: $linkColor;
 $u-BreadCrumbs__item--linkColorActive: $linkColorActive;
 
 /* Footer */

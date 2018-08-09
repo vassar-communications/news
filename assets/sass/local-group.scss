@@ -285,6 +285,17 @@ li {
 	.u-lAside, .u-lContent {
 		padding: 0;
 	}
+    /* temporary until fixed */
+    .u-NavSite {
+        width: 0;
+        height: 0;
+        padding: 0;
+    }
+    .u-NavSite__level {
+        display: none;
+        visibility: hidden;
+    }
+    /* temp */
 	.ac-NavAnchor--top {
 		bottom: 1em;
 		position: fixed;
@@ -652,10 +663,18 @@ a.fn.org.url.u-VCard__fn.u-VCard__item.u-VCard__org.u-VCard__url:link,
 	}
 	&:hover,
 	&:focus {
+        color: #fff;
+        svg path {
+            fill: #fff;
+        }
 		background-color: $linkColorHoverFocus;
 		border-bottom: none;
 	}
 	&:active {
+	    color: #fff;
+        svg path {
+            fill: #fff;
+        }
 		background-color: $linkColorActive;
 		border-bottom: none;
 	}

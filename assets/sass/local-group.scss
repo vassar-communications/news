@@ -335,6 +335,9 @@ li {
         padding: 4%;
         margin-bottom: 5em;
     }
+	.u-ExtendedFooter__listContainer {
+        padding: 1em;
+	}
     .u-ExtendedFooter__listHeader,
     .u-ExtendedFooter__list {
         text-align: left;
@@ -377,7 +380,6 @@ li {
     }
 	.u-ExtendedFooter__listContainer {
         flex-basis: 50%;
-        padding: 0 1em;
 	}
 }
 @media all and (min-width: $small) {
@@ -470,8 +472,10 @@ a:active {
 h1 a:link, h2 a:link, h3 a:link, h4 a:link, h5 a:link, h6 a:link,
 .Module__headerLink:link,
 .Module--sidebar a:link,
-a.fn.org.url.u-VCard__fn.u-VCard__item.u-VCard__org.u-VCard__url,
-a.fn.org.url.u-VCard__fn.u-VCard__item.u-VCard__org.u-VCard__url:link,
+.u-VCard--site a.u-VCard__item.u-VCard__url,
+.u-VCard--site a.u-VCard__item.u-VCard__url:hover,
+.u-VCard--site .u-VCard__item.u-VCard__org:hover,
+.u-VCard--site .u-VCard__adr .u-VCard__item:hover,
 .u-ArticleNavGroup__navButton:link,
 .u-ArticleListItem__link:link,
 .u-lFooter .SocialAccount__iconTarget:link {
@@ -495,6 +499,9 @@ a.fn.org.url.u-VCard__fn.u-VCard__item.u-VCard__org.u-VCard__url:link,
 .u-ExtendedFooter__listGroup {
 	border-top: 1px solid rgba(225, 225, 225, .75);
 	border-bottom: 1px solid rgba(225, 225, 225, .75);
+}
+.u-ExtendedFooter__listContainer {
+    background-color: rgba(0,0,0,0.5)
 }
 .u-footMasthead__siteName--link {
     background: transparent url(/assets/images/vassar-logo.png) no-repeat center;

@@ -94,11 +94,21 @@ h3.u-Article__title {
         margin-bottom: 10%;
         padding-bottom: 7.5%;
     }
-    .u-ArticleListItem__thumbnail {
+    
+    .u-ArticleListItem__thumbnail
+    {
         float: none;
-        width: 100%;
         margin: 0 0 2.5% !important;
+        padding-bottom: 100%;
+        position: relative;
+        width: 100%;
     }
+
+    .u-ArticleListItem__thumbnail img
+    {
+        position: absolute;
+    }
+
     .u-ArticleListItem__summary {
         margin-bottom: 0;
     }
@@ -147,11 +157,15 @@ h3.u-Article__title {
         margin-bottom: 6%;
         padding-bottom: 3.5%;
     }
-    .u-ArticleListItem__thumbnail {
+
+    .u-ArticleListItem__thumbnail
+    {
         float: left;
-        width: 13em;
         margin: 0 2.5% 2.5% 0 !important;
+        padding-bottom: 13em;
+        width: 13em;
     }
+
     .u-ArticleNavGroup__navButton,
     .u-NewsContactLink a h4 {
         display: inline;

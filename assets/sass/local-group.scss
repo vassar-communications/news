@@ -1,9 +1,10 @@
 @import "_mixins";
 @import "_config";
 
-/* New - from the home page - make this Global? */
+/* News and Vassar Everywhere sass straight from the vassar homepage repo.
+These styles need to be added centrally so they can be used on both the 
+Vassar hompage and the News homepage */
 
-/* News */
 .u-ArticleGroup.u-ArticleGroup--newsSlider {
     .u-ArticleNavGroup__navButton--archive {
         text-align: center;
@@ -11,10 +12,19 @@
         text-transform: uppercase;
         letter-spacing: .03em;
     }
+    .straight-from-the-students {
+        display: block;
+        font-size: 1.5em;
+        line-height: 1;
+        color: $linkColor;
+        font-weight: 600 !important;
+        text-transform: $fontWeightBold;
+        font-family: $sans-serif-condensed;
+    }
 }
 @media screen {
     .u-ArticleGroup.u-ArticleGroup--newsSlider {
-        margin: 2em auto 3em;
+        margin: 3% auto 0;
         width: 100%;
         .u-ArticleListItem__summary,
         .u-ArticleListItem__label {
@@ -37,18 +47,13 @@
             padding:1.3em;
             width:15em;
         }
-
-        .u-ArticleListItem__thumbnail
-        {
+        .u-ArticleListItem__thumbnail {
             padding-bottom: 100%;
             position: relative;
         }
-
-        .u-ArticleListItem__thumbnail img
-        {
+        .u-ArticleListItem__thumbnail img {
             position: absolute;
         }
-
         .u-ArticleListItem__thumbnail {
             float: none;
         }
@@ -69,7 +74,7 @@
 }
 @media all and (min-width: $small) {
     .u-ArticleGroup.u-ArticleGroup--newsSlider {
-        margin: 3em auto 2em;
+        margin: 3% auto 0;
     }
 }
 @media all and (min-width: 67.5em) {
@@ -86,10 +91,10 @@
     .u-ArticleListItem__thumbnail {
         margin: 0 0 2% 0 !important;
     }
-
+    
     .u-ArticleListItem__thumbnail:after
     {
-        border: 1px solid rgba(116, 102, 97, 0.3);
+        border: 1px solid rgba(116, 102, 97, 0.5);
         bottom: 0;
         content: "";
         left: 0;
@@ -97,7 +102,7 @@
         right: 0;
         top: 0;
     }
-
+    
     .u-ArticleNavGroup__navButton--archive,
     .Module__fullWidthFacts .moreLink {
         background: none;
@@ -125,8 +130,6 @@
         }
     }
 }
-
-/* Vassar Everywhere */
 .Module__fullWidthInTheMedia {
     .Module.Module--mainContent.Module--list .Module__listItem,
     .Module.Module--mainContent.Module--list .Module__listItem a {
@@ -146,8 +149,6 @@
         border-top: 1px solid rgba(116, 102, 97, 0.27);
         padding: .75em 0 .15em;
         color: $fontColor !important;
-        font-family: $sans-serif-condensed;
-        font-weight: $fontWeightRegular;
     }
     .Module__title {
         font-size: 100%;
@@ -249,7 +250,7 @@
     }
 }
 .items__nav {
-    margin:0 0 2em 0;
+    margin:0 0 3em 0;
     padding:0;
     text-align:center;
     .items__tab {
@@ -287,28 +288,25 @@
     @include link-colors($fontColor, $linkColorHoverFocus, $linkColorActive, $fontColor, $linkColorHoverFocus);
 }
 
+/* End of the sass that needs to be moved to a central location. */
+
+/* local Stuff */
 /* Nav */
 
-@media screen
-{   
-    .u-lMain
-    {
+@media screen {   
+    .u-lMain {
         float: right;
         margin-top: 8em;
     }
-    .u-NavSite
-    {
+    .u-NavSite {
         display: block;
         padding: 0;
-        /* hide outline around nav when current page is focused */ 
         outline: none;
         position: absolute;
         visibility: visible;
         width: 100%;
     }
-
-    .u-NavSite__item
-    {
+    .u-NavSite__item {
         font-size: 1.2em;
         font-weight: normal;
         flex: 0 1 auto;
@@ -316,69 +314,48 @@
         padding: .75em;
         text-align: center;
     }
-
     .u-NavSite__item,
-    .u-NavSite__item:visited
-    {
+    .u-NavSite__item:visited {
         color: $linkColor;
         color: $linkColor;
         border-bottom: solid .15em #fff;
     }
-
     .u-NavSite__item:focus,
-    .u-NavSite__item:hover,
-    {
+    .u-NavSite__item:hover {
         background-color: $linkColor;
         border-bottom: solid .15em $linkColor;
         color: #fff;
     }
     .u-NavSite__item--isCurrent,
-    .u-NavSite__item--isCurrent:visited
-    {
+    .u-NavSite__item--isCurrent:visited {
         background-color: #fff;
         border-bottom: solid .15em $linkColor;
         color: $linkColor;
     }
-
     .u-NavSite__item--isCurrent:focus,
-    .u-NavSite__item--isCurrent:hover
-    {
+    .u-NavSite__item--isCurrent:hover {
         background-color: #fff;
         border-bottom: solid .15em #fff;
         color: $linkColor;
     }
-        
-    .u-NavSite__level
-    {
+    .u-NavSite__level {
         display: flex;
         flex-flow: column nowrap;
         flex-flow: row wrap;
         justify-content: center;
     }
 }
-
-@media screen and (min-width: $small)
-{
-    .u-NavSite__level
-    {
+@media screen and (min-width: $small) {
+    .u-NavSite__level {
         flex-flow: row wrap;
         justify-content: center;
     }
-    
-    .u-NavSite__level--1 .u-NavSite__item
-    {
+    .u-NavSite__level--1 .u-NavSite__item {
         font-size: 1.2em;
     }
 }
-
-@media screen and (min-width: $medium)
-{       
-}
-
-@media screen and (min-width: 62em)
-{
-    .u-NavSite
-    {
+@media screen and (min-width: 62em) {
+    .u-NavSite {
         left: 0;
         margin: 0 auto;
         max-width: 70em;
@@ -386,17 +363,14 @@
         right: 0;
         width: 100%;
     }
-
-    .u-NavSite__item
-    {
+    .u-NavSite__item {
         float: left;
         text-align: center;
         white-space: nowrap;
     }
 }
-/* End Global stuff
+/* end nav */
 
-/* local Stuff */
 .u-Masthead__siteName {
     letter-spacing: .03em;
 }
@@ -478,6 +452,12 @@
     font-weight: $fontWeightBold !important;
     text-transform: uppercase;
     font-family: $sans-serif-condensed;
+}
+.Module__fullWidthInTheMedia {
+    h2.Module__header {
+        font-family: $sans-serif-condensed;
+        font-weight: $fontWeightMedium;
+    }
 }
 @media screen {
     .u-NavSite {
@@ -1113,8 +1093,4 @@
 }
 .u-ArticleGroup--newsMediaTicker {
     margin: 0 0 4%;
-}
-/* remove */
-.u-ArticleNavGroup__navButton--archive {
-    display: none;
 }

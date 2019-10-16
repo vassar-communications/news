@@ -314,35 +314,99 @@ Vassar hompage and the News homepage */
         padding: .75em;
         text-align: center;
     }
-    .u-NavSite__item,
+    .u-NavSite__item:link, 
     .u-NavSite__item:visited {
         color: $linkColor;
-        color: $linkColor;
-        border-bottom: solid .15em #fff;
+        border-bottom: none;
     }
     .u-NavSite__item:focus,
     .u-NavSite__item:hover {
         background-color: $linkColor;
-        border-bottom: solid .15em $linkColor;
         color: #fff;
     }
     .u-NavSite__item--isCurrent,
-    .u-NavSite__item--isCurrent:visited {
-        background-color: #fff;
-        border-bottom: solid .15em $linkColor;
-        color: $linkColor;
+    .u-NavSite__item--isCurrent:visited,
+    .u-NavSite__item--isOpen, 
+    .u-NavSite__item--isOpen:visited {
+        background-color: $linkColor;
+        color: #fff;
+        .u-NavSite__item {
+            color: #fff;
+        }
     }
     .u-NavSite__item--isCurrent:focus,
     .u-NavSite__item--isCurrent:hover {
         background-color: #fff;
-        border-bottom: solid .15em #fff;
         color: $linkColor;
     }
     .u-NavSite__level {
         display: flex;
-        flex-flow: column nowrap;
         flex-flow: row wrap;
         justify-content: center;
+    }
+    .u-NavSite.u-NavSite__secondary {
+        width: 23.5em;
+        margin: 10em auto 0;
+        left: 0;
+        right: 0;
+    }
+    .u-NavSite__level [class*=icon-] img,
+    .u-NavSite__level [class*=icon-] svg {
+        float: right;
+        margin-left: .33em;
+    }
+    .u-NavSite__level--2 {
+        background-color: #F0EEEB;
+        border-bottom: 1px solid rgba(115,102,96,0.26);
+        padding: .5em;
+        flex-flow: column;
+        .u-NavSite__item {
+            padding: .15em .8em;
+            font: $fontWeightBold .9em/1.1 $sans-serif;
+            @include link-colors($linkColor, $linkColorHoverFocus, $linkColorActive, $linkColor, $linkColorHoverFocus);
+        }
+        .u-NavSite__item--isCurrent {
+            @include link-colors($linkColorHoverFocus, $linkColorHoverFocus, $linkColorHoverFocus, $linkColorHoverFocus, $linkColorHoverFocus);
+        }
+        .u-NavSite__item.icon-external svg path,
+        .u-NavSite__item.icon-external svg path:visited {
+            fill: $linkColor; 
+        }
+        .u-NavSite__item.icon-external:hover svg path,
+        .u-NavSite__item.icon-external:focus svg path {
+            fill: $linkColorHoverFocus; 
+        }
+        .u-NavSite__item.icon-external:active svg path {
+            fill: $linkColorActive; 
+        }
+        .u-NavSite__item:link,
+        .u-NavSite__item:visited  {
+            background-color: transparent;
+        }
+        .u-NavSite__itemContainer {
+            border-right: 1px solid rgba(115,102,96,0.26);
+        }
+        .u-NavSite__itemContainer:last-child {
+            border-right: none;
+            .u-NavSite__item {
+                padding-right: 0;
+            }
+        }
+        padding-left: 0;
+    }
+    .secondLevelNavSplit .u-pageTitle {
+        margin-top: 2em;
+    }
+}
+@media screen and (min-width: 28.12em) {
+    .secondLevelNavSplit .u-pageTitle {
+        margin-top: 1em;
+    }
+    .u-NavSite.u-NavSite__secondary {
+        margin: 5em auto 0;
+    }
+    .u-NavSite__level--2 {
+        flex-flow: row;
     }
 }
 @media screen and (min-width: $small) {
@@ -364,9 +428,9 @@ Vassar hompage and the News homepage */
         width: 100%;
     }
     .u-NavSite__item {
-        float: left;
+        /*float: left;
         text-align: center;
-        white-space: nowrap;
+        white-space: nowrap;*/
     }
 }
 /* end nav */
@@ -515,7 +579,10 @@ Vassar hompage and the News homepage */
     .u-folderAll-news,
     .u-folderVassar-events,
     .u-folderAll,
-    .u-folderVassar-everywhere {
+    .u-folderVassar-everywhere,
+    .u-folderArts,
+    .u-folderOn-campus,
+    .u-folderRegional {
         .u-lContent {
             width: 100%;
             float: none;
@@ -822,7 +889,10 @@ Vassar hompage and the News homepage */
     .u-folderAll-news,
     .u-folderAll,
     .u-folderVassar-events,
-    .u-folderVassar-everywhere {
+    .u-folderVassar-everywhere,
+    .u-folderArts,
+    .u-folderOn-campus,
+    .u-folderRegional {
         .u-lContent {
             max-width: 45em;
             margin: 0 auto;
@@ -976,19 +1046,25 @@ Vassar hompage and the News homepage */
     .u-folderAll-news,
     .u-folderAll,
     .u-folderVassar-events,
-    .u-folderVassar-everywhere {
+    .u-folderVassar-everywhere,
+    .u-folderArts,
+    .u-folderOn-campus,
+    .u-folderRegional {
         .u-lContent {
             max-width: 46em;
 			margin: 0 auto;
         }
     }
+    /*html[class*="u-folder20"] .u-lAside {
+       background:black;
+    }*/
 }
 .u-pageTitle {
     border-bottom: 1px solid rgb(116, 102, 97);
     border-bottom: 1px solid rgba(116, 102, 97, .3);
 }
 .u-lHeader {
-    background: #666 url("../../../assets/images/news-header-bg.jpg") no-repeat center;
+    background: #666 url("../images/news-events-header-bg.jpg") no-repeat center;
     background-size: cover;
 }
 .u-ArticleListItem__link {
@@ -1099,4 +1175,20 @@ Vassar hompage and the News homepage */
 }
 .u-ArticleGroup--newsMediaTicker {
     margin: 0 0 4%;
+}
+.secondLevelNavSplit {
+    .u-pageTitle {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    @media screen {
+        .u-lMain {
+            margin: 20em auto 5% !important;
+        }
+    }
+    @media screen and (min-width: 28.12em) {
+        .u-lMain {
+            margin: 12em auto 5% !important;
+        }
+    }
 }

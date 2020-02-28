@@ -48,11 +48,11 @@ Vassar hompage and the News homepage */
             width:15em;
         }
         .u-ArticleListItem__thumbnail {
-            padding-bottom: 100%;
+            /* padding-bottom: 100%; */
             position: relative;
         }
         .u-ArticleListItem__thumbnail img {
-            position: absolute;
+            position: relative;
         }
         .u-ArticleListItem__thumbnail {
             float: none;
@@ -696,7 +696,7 @@ Vassar hompage and the News homepage */
     .u-ArticleListItem__thumbnail {
         float: none;
         margin: 0 0 2.5% !important;
-        padding-bottom: 100%;
+        /* padding-bottom: 100%; */
         position: relative;
         width: 100%;
     }
@@ -1098,7 +1098,7 @@ Vassar hompage and the News homepage */
         }
         .u-ArticleListItem__thumbnail  {
             padding-bottom: 0;
-            width: 35%;
+            width: 60%;
             float: left;
             margin: 0 2% 4% 0 !important;
             img {

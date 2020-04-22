@@ -700,9 +700,6 @@ Vassar hompage and the News homepage */
         position: relative;
         width: 100%;
     }
-    .u-ArticleListItem__thumbnail img {
-        position: absolute;
-    }
     .u-ArticleListItem__summary {
         margin-bottom: 0;
 		display: table-cell}
@@ -1003,7 +1000,7 @@ Vassar hompage and the News homepage */
     .u-ArticleListItem__thumbnail {
         float: left;
         margin: 0 2.5% 2.5% 0 !important;
-        padding-bottom: 13em;
+        padding-bottom: 0;
         width: 13em;
     }
     .u-ArticleNavGroup__navButton,

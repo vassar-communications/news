@@ -58,3 +58,5 @@ config.codekit
 
 *.css
 *.codekit3
+*.html
+images/

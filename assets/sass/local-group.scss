@@ -1585,3 +1585,29 @@ ul.videoList
     display: block;
     visibility: visible;
 }
+.u-folderMultimedia {
+    .modulesArea__row {
+        margin-bottom: 3em;
+        padding-bottom: 1em;
+        border-bottom: 1px solid #746661;
+        border-bottom: 1px solid rgba(116,102,97,0.3);
+    }
+    .Module__title {
+        font-family: $sans-serif-condensed;
+        font-size: 2.75em;
+        text-transform: none;
+        letter-spacing: inherit;
+        font-weight: 300;
+    }
+    .videoList figure {
+        margin-bottom: .5em;
+    }
+    .videoLink h3 {
+        font-family: $sans-serif;
+        font-size: 1em;
+        font-weight: 500;
+    }
+    .Module__desc {
+        max-width: 39em;
+    }
+}

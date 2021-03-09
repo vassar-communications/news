@@ -1,318 +1,144 @@
-@import "_mixins";
+@mixin link-colors($normal, $hover: false, $active: false, $visited: false, $focus: false) {
+	color: $normal;
+	@if $visited {
+		&:visited {
+			color: $visited; } }
+	@if $focus {
+		&:focus {
+			color: $focus; } }
+	@if $hover {
+		&:hover {
+			color: $hover; } }
+	@if $active {
+		&:active {
+			color: $active; } }
+}
+@mixin  ac-hiddenVisually() {
+	border:0 !important;
+	clip: rect(1px, 1px, 1px, 1px);
+	height: 1px !important;
+	padding:0 !important;
+	overflow: hidden;
+	position: absolute !important;
+	width: 1px !important;
+}
+
 @import "_config";
 
-/* News and Vassar Everywhere sass straight from the vassar homepage repo.
-These styles need to be added centrally so they can be used on both the 
-Vassar hompage and the News homepage */
+/* extend */
+.title-gradient {
+    color: $burgundy-2;
+    text-transform: none;
+    background: linear-gradient(135deg, $burgundy-2 0%, $burgundy-bright 70%);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+.PageContentInner {
+    display: grid;
+    grid-column-gap: 0;
+    grid-template-areas:
+        "header header header header"
+        "main-navigation main-navigation main-navigation main-navigation "
+        "second-navigation second-navigation second-navigation second-navigation"
+        "main main main main"
+        "footer footer footer footer";
+    /*grid-template-columns: 1fr minmax(5em, 20rem) minmax(5em, 48rem) 1fr; */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.u-lHeader {
+    padding: 14% 8% 0 0 !important;
+    grid-area: header;
+}
+.u-Masthead {
+    margin: 0 auto 0 5%;
+}
+.u-Masthead__siteName {
+    font-family: $serif;
+    font-weight: $fontWeightRegular;
+    font-size: 2.5em;
+    width: 100%;
+    max-width: none;
+    text-transform: none;
+    text-align: left;
+    letter-spacing: 0;
+}
+.u-Masthead__siteName--link {
+    background-color: #000;
+    background-color: rgba(0,0,0,0.85);
+    display: inline-block;
+    padding: .25em;
+    transition: background-color;
+}
+.u-lFooter {
+    grid-area: footer;
+}
+.secondLevelNavSplit .modulesArea__row [id] {
+   margin-top: -4em;
+   padding-top: 4em !important;
+}
 
-.u-ArticleGroup.u-ArticleGroup--newsSlider {
-    .u-ArticleNavGroup__navButton--archive {
-        text-align: center;
-        font: normal $fontWeightNormal 1.75em/1 $sans-serif-condensed;
-        text-transform: uppercase;
-        letter-spacing: .03em;
+@media screen and (min-width: 37.5em) {
+    .u-Masthead {
+        display:flex;
+        justify-content: flex-end;
+        flex-direction: column;
+        min-height: 15rem;
+        max-width: 53rem;
     }
-    .straight-from-the-students {
-        display: block;
-        font-size: 1.5em;
-        line-height: 1;
-        color: $linkColor;
-        font-weight: 600 !important;
-        text-transform: $fontWeightBold;
-        font-family: $sans-serif-condensed;
+    .u-Masthead__siteName {
+        font-size: 4.5em
+    }
+    .u-Masthead__siteName--link {
+        align-self: flex-end;
     }
 }
+@media screen and (min-width: 62em) {
+    .u-Masthead__siteName--link {
+        margin-left: 0;
+    }
+}
+.u-lContent {
+    font-weight: $fontWeightRegular;
+}
+.Module__title,
+.Module__header {
+    font-family: $serif;
+    font-size: 1.75em;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: inherit;
+    font-weight: $fontWeightBold;
+    color: $burgundy-2;
+}
+
 @media screen {
-    .u-ArticleGroup.u-ArticleGroup--newsSlider {
-        margin: 3% auto 0;
-        width: 100%;
-        .u-ArticleListItem__summary,
-        .u-ArticleListItem__label {
-            display: none;
-        }
-        .u-ArticleListItem__title {
-            margin: 0;
-            font: $fontWeightNormal 1em/1.2 $sans-serif;
-            text-transform: none;
-        }
-        .u-ArticleList {
-            width: 100%;
-            margin: 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .u-ArticleListItem {
-            margin: 0;
-            padding:1.3em;
-            width:15em;
-        }
-        .u-ArticleListItem__thumbnail {
-            /* padding-bottom: 100%; */
-            position: relative;
-        }
-        .u-ArticleListItem__thumbnail img {
-            position: relative;
-        }
-        .u-ArticleListItem__thumbnail {
-            float: none;
-        }
-        .u-ArticleNavGroup {
-            position: relative;
-            width: 70%;
-            margin: 3% auto 0;
-            padding: 0;
-            overflow: hidden;
-        }
-        .u-ArticleNavGroup__navButton--archive {
-            margin: 0 auto;
-            padding: 0 0 .19em;
-            width: 3.5em;
-            float: none;
-        }
-    }
-}
-@media all and (min-width: $small) {
-    .u-ArticleGroup.u-ArticleGroup--newsSlider {
-        margin: 3% auto 0;
-    }
-}
-@media all and (min-width: 67.5em) {
-    .u-ArticleGroup.u-ArticleGroup--newsSlider {
-        .u-ArticleList {
-            flex-wrap: nowrap;
-        }
-    }
-}
-.u-ArticleGroup.u-ArticleGroup--newsSlider {   
-    .u-ArticleListItem__title {
-      @include link-colors($fontColor, $linkColorHoverFocus, $linkColorActive, $fontColor, $linkColorHoverFocus);
-    }
-    .u-ArticleListItem__thumbnail {
-        margin: 0 0 2% 0 !important;
-    }
-    
-    .u-ArticleListItem__thumbnail:after
-    {
-        border: 1px solid rgba(116, 102, 97, 0.5);
-        bottom: 0;
-        content: "";
-        left: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
-    
-    .u-ArticleNavGroup__navButton--archive,
-    .Module__fullWidthFacts .moreLink {
-        background: none;
-        background-color: $linkColor;
-        color: #ff;
-        border-bottom: none !important;
-        &:visited {
-            background: none;
-            background-color: transparent;
-            color: #fff;
-            border-bottom: none !important;
-        }
-        &:hover,
-        &:focus {
-            background: none;
-            background-color: $linkColorHoverFocus;
-            color: #fff;
-            border-bottom: none !important;
-        }
-        &:active {
-            background: none;
-            background-color: $linkColorActive;
-            color: #fff;
-            border-bottom: none !important;
-        }
-    }
-}
-.Module__fullWidthInTheMedia {
-    .Module.Module--mainContent.Module--list .Module__listItem,
-    .Module.Module--mainContent.Module--list .Module__listItem a {
-        text-transform: none;
-    }
-    .Module__header {
-        display: block;
-        text-align: center;
-        text-transform: uppercase;
-        font-size: 3em;
-        padding-top: 0;
-        /* text-align: left; */
-    }
-    h2.Module__header {
-        font-size: 2em;
-        margin: 0 25%;
-        border-top: 1px solid rgba(116, 102, 97, 0.27);
-        padding: .75em 0 .15em;
-        color: $fontColor !important;
-    }
-    .Module__title {
-        font-size: 100%;
-        text-align: left;
-        text-transform: none;
-        display: inherit;
-        line-height: 1;
-        letter-spacing: 0;
-        font-family: "acumin-pro","Arial","Helvetica";
-    }
-    .Module__listItem {
-        list-style: none;
-        display: inline-block;
-        margin: 0;
-        padding: 0;
-        border-bottom: none;
-        height: auto;
-    }
-    .Module__link:link {
-        border-bottom: none;
-    }
-}
-.js {
-    .u-ArticleGroup--newsMediaTicker>ul.Module__list {
-        overflow: visible;
-        position: relative;
-        margin-top: 0;
-        margin-bottom: 0;
-        padding: 9em 0 0 0;
-        max-width: 40em;
-    }
-    .u-ArticleGroup--newsMediaTicker>ul.Module__list>li {
-        display:none;
-        position:absolute;
-        top:0;
-        left:0;
-        width:100%;
-        height:100%;
-    }
-    .u-ArticleGroup--newsMediaTicker>ul.Module__list>li:first-child {
-        display:block
-    }
-    .items__nav {
-        .items__tabLink {
-            width:1.25em;
-            height:1.25em;
-        }    
-    }
-}
-@media all and (min-width: 21.88em) {
-    .js {
-        .u-ArticleGroup--newsMediaTicker>ul.Module__list {
-            padding: 8em 0 0 0;
-        }
-    }
-}
-@media all and (min-width: 34.38em) {
-    .js {
-        .u-ArticleGroup--newsMediaTicker>ul.Module__list {
-            padding: 6em 0 0 0;
-        }
-    }
-}
-@media all and (min-width: 46.88em) {
-    .js {
-        .u-ArticleGroup--newsMediaTicker>ul.Module__list {
-            padding: 4em 0 0 0;
-        }
-    }
-}
-@media all and (min-width: 50em) {
-    .js {
-        .u-ArticleGroup--newsMediaTicker>ul.Module__list {
-            margin: 0 auto;
-            padding: 4.5em 0 0 0;
-        }
-        .items__nav {
-            .items__tabLink {
-                width:1em;
-                height:1em;
-            }    
-        }
-    }
-}
-@keyframes fadeIn{
-    from{
-        opacity:0
-    }
-    to{
-        opacity:1
-    }
-}
-@keyframes fadeOut{
-    from{
-        opacity:1
-    }
-    to{
-        opacity:0
-    }
-}
-.items__nav {
-    margin:0 0 3em 0;
-    padding:0;
-    text-align:center;
-    .items__tab {
-        list-style:none;
-        display:inline;
-        margin:0 0.5em
-    }
-    .items__tab.active .items__tabLink {
-        background: $linkColorActive;
-    }
-    .items__tabLink {
-        background:#eae7e0;
-        border-radius:50%;
-        width:1.25em;
-        height:1.25em;
-        display:inline-block;
-        overflow:hidden;
-        text-indent:-900px;
-        color:transparent;
-    }
-    a.items__tabLink {
-        border-bottom: none;
-    }
-    .items__tabLink:hover {
-        background:$linkColorHoverFocus;
-    }
-    .items__tabLink:focus {
-        background:#eae7e0;
-    }
-    .items__tabLink:active {
-        background:$linkColorActive;
-    }
-}
-.u-ArticleGroup--newsMediaTicker .Module__listItem .Module__link {
-    @include link-colors($fontColor, $linkColorHoverFocus, $linkColorActive, $fontColor, $linkColorHoverFocus);
-}
-
-/* End of the sass that needs to be moved to a central location. */
-
-/* local Stuff */
-/* Nav */
-
-@media screen {   
     .u-lMain {
-        float: right;
-        margin-top: 8em;
+        /* float: right; */
+        margin-top: 3em !important;
+        grid-area: main;
+        margin-bottom: 3em !important;
+    }
+    .u-NavSite__main {
+        grid-area: main-navigation;
+        margin-bottom: 1.5em !important;
+    }
+    .u-NavSite__secondary {
+        grid-area: second-navigation;
     }
     .u-NavSite {
         display: block;
         padding: 0;
         outline: none;
-        position: absolute;
         visibility: visible;
         width: 100%;
     }
-    .u-NavSite__item {
-        font-size: 1.2em;
-        font-weight: normal;
+    .u-NavSite__level--1 .u-NavSite__item {
+        font: $fontWeightRegular 1.15em/1.1 $sans-serif;
         flex: 0 1 auto;
         line-height: 1;
         padding: .75em;
         text-align: center;
+        text-transform: uppercase;
     }
     .u-NavSite__item:link, 
     .u-NavSite__item:visited {
@@ -321,17 +147,17 @@ Vassar hompage and the News homepage */
     }
     .u-NavSite__item:focus,
     .u-NavSite__item:hover {
-        background-color: $linkColor;
-        color: #fff;
+        background-color: $linkColorHoverFocus;
+        color: $linkColor;
     }
     .u-NavSite__item--isCurrent,
     .u-NavSite__item--isCurrent:visited,
     .u-NavSite__item--isOpen, 
     .u-NavSite__item--isOpen:visited {
-        background-color: $linkColor;
-        color: #fff;
+        background-color: $linkColorHoverFocus;
+        color: $gray-dark;
         .u-NavSite__item {
-            color: #fff;
+            color: $gray-dark;
         }
     }
     .u-NavSite__item--isCurrent:focus,
@@ -345,10 +171,17 @@ Vassar hompage and the News homepage */
         justify-content: center;
     }
     .u-NavSite.u-NavSite__secondary {
-        width: 23.5em;
-        margin: 10em auto 0;
-        left: 0;
-        right: 0;
+        width: 100%;
+        margin: 0 auto 0;
+        top: 0;
+        justify-content: center;
+        position: sticky;
+        .u-NavSite__itemContainer {
+            border-right: 1px solid $gray-border;
+            &:last-child {
+                border-right: none;
+            }
+        }
     }
     .u-NavSite__level [class*=icon-] img,
     .u-NavSite__level [class*=icon-] svg {
@@ -356,87 +189,57 @@ Vassar hompage and the News homepage */
         margin-left: .33em;
     }
     .u-NavSite__level--2 {
-        background-color: #F0EEEB;
-        border-bottom: 1px solid rgba(115,102,96,0.26);
-        padding: .5em;
-        flex-flow: column;
+        background-color: $gray-light;
+        border: 1px solid $gray-border;
+        padding: .25em;
+        flex-flow: wrap;
+        justify-content: center;
         .u-NavSite__item {
-            padding: .15em .8em;
-            font: $fontWeightBold .9em/1.1 $sans-serif;
-            /*@include link-colors($linkColorVisited, $linkColorVisited, $linkColorHoverFocus, $linkColorHoverFocus, $linkColor);*/
-        }    
-        .u-NavSite__item--isCurrent {
-            /*@include link-colors($linkColor, $linkColor, $linkColorHoverFocus, $linkColorHoverFocus, $linkColor);*/
+            text-align: center;
+            padding: .5em;
+            font: $fontWeightRegular 1em/1.1 $sans-serif;
+            text-transform: none;
         }
-        .u-NavSite__item {
-            color: #746661
-        }
+        .u-NavSite__item,
         .u-NavSite__item:visited {
-            color: #746661
+            color: $linkColor;
         }
-        .u-NavSite__item:focus {
-            color: #c1b5b0
-        }
-        .u-NavSite__item:hover {
-            color: #c1b5b0
-        }
+        .u-NavSite__item:focus,
+        .u-NavSite__item:hover,
         .u-NavSite__item:active {
-            color: #882344
+            color: $gray-dark;
+            background-color: $gray-border;
         }
         .u-NavSite__item--isCurrent {
-            color: #882344
+            color: $burgundy-1
         }
         .u-NavSite__item--isCurrent:visited {
-            color: #882344
+            color: $burgundy-1
         }
         .u-NavSite__item--isCurrent:focus {
-            color: #c1b5b0
+            color: $gray-light
         }
         .u-NavSite__item--isCurrent:hover {
-            color: #c1b5b0
+            color: $gray-light
         }
         .u-NavSite__item--isCurrent:active {
-            color: #882344
+            color: $burgundy-1
         }
-        .u-NavSite__item.icon-external svg path,
-        .u-NavSite__item.icon-external svg path:visited {
-            fill: $linkColorVisited; 
-        }
-        .u-NavSite__item.icon-external:hover svg path,
-        .u-NavSite__item.icon-external:focus svg path {
-            fill: $linkColorHoverFocus; 
-        }
-        .u-NavSite__item.icon-external:active svg path {
-            fill: $linkColor; 
-        }
-        .u-NavSite__item:link,
-        .u-NavSite__item:visited  {
-            background-color: transparent;
-        }
-        .u-NavSite__itemContainer {
-            border-right: 1px solid rgba(115,102,96,0.26);
-        }
-        .u-NavSite__itemContainer:last-child {
-            border-right: none;
-            .u-NavSite__item {
-                padding-right: 0;
-            }
+        .u-NavSite__item.icon-external svg {
+            display: none;
         }
         padding-left: 0;
     }
-    .secondLevelNavSplit .u-pageTitle {
-        margin-top: 2em;
-    }
 }
-@media screen and (min-width: 28.12em) {
-    .secondLevelNavSplit .u-pageTitle {
-        margin-top: 1em;
-    }
+@media screen and (min-width: $tiny) {
     .u-NavSite.u-NavSite__secondary {
-        margin: 5em auto 0;
+        margin: 0 auto 0;
     }
     .u-NavSite__level--2 {
         flex-flow: row;
+        .u-NavSite__item {
+            padding: .25em .5em;
+        }        
     }
 }
 @media screen and (min-width: $small) {
@@ -446,63 +249,66 @@ Vassar hompage and the News homepage */
     }
     .u-NavSite__level--1 .u-NavSite__item {
         font-size: 1.2em;
+        padding-right: .5em;
     }
 }
 @media screen and (min-width: 62em) {
     .u-NavSite {
-        left: 0;
-        margin: 0 auto;
-        max-width: 70em;
-        position: absolute;
-        right: 0;
         width: 100%;
-    }
-    .u-NavSite__item {
-        /*float: left;
-        text-align: center;
-        white-space: nowrap;*/
     }
 }
 /* end nav */
 
-.u-Masthead__siteName {
-    letter-spacing: .03em;
-}
 .u-pageTitle {
     display: block;
     visibility: visible;
     text-align: left;
-    text-transform: uppercase;
+    font-family: $serif;
     font-size: 3em;
-    line-height: 1.1;
-    margin: 0 0 6%;
-    letter-spacing: .03em;
-    padding-bottom: 3.5%;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 0.92;
+    padding-bottom: 0.2em;
+    position: relative;
+    margin-bottom: 0.8em;
+    margin-top: 0.2em;
+    @extend .title-gradient;
+    &:after {
+        content: "";
+        position: absolute;
+        width: 3em;
+        border-top: 1px solid $burgundy-bright;
+        left: 0;
+        bottom: -0.25em
+    }
 }
 .u-ArticleListItem__title {
-    line-height: 1.2;
+    line-height: 1.1;
     text-transform: none;
     letter-spacing: normal;
     margin-top: 0;
-    font-weight: 600 !important;
-    margin-bottom: 0;
+    font-weight: $fontWeightBold !important;
 }
-.u-Article__title {
-    font-size: 1.25em;
-    line-height: 1.2;
+.u-Article__title,
+.parent-site h3 {
+    font-size: 1.5em;
+    line-height: 1.1;
     margin-top: 0;
-    font-family: $sans-serif;
+    font-family: $serif;
     font-weight: $fontWeightBold;
     letter-spacing: normal;
+    text-transform: none;
+    color: $burgundy-2;
 }
-.u-lContent {
-    h2, h3, h4, h5, h6 {
-        line-height: 1.1;
-        margin-bottom: .4em;
-        padding-top: .8em;
-        font-family: $sans-serif;
-        font-weight: $fontWeightBold;
-        letter-spacing: none;
+h3.u-ExtendedFooter__listHeader {
+    color: #fff;
+}
+.u-VCard--site {
+    .org {
+        font: $fontWeightRegular 2em/1.1 $serif;
+        text-transform: capitalize;
+        letter-spacing: 0;
+        margin-bottom: .5em;
     }
 }
 .u-ArticleListItem__label--dateline {
@@ -512,9 +318,8 @@ Vassar hompage and the News homepage */
 .u-ArticleNavGroup__navButton,
 .u-NewsContactLink a h4 {
     text-align: center;
-    font: normal $fontWeightNormal 1.75em/1 $sans-serif-condensed;
+    font: normal $fontWeightRegular 1.1em/1 $sans-serif;
     text-transform: uppercase;
-    letter-spacing: .03em;
     padding: 0;
 }
 .u-ArticleNavGroup__navButton.u-ArticleNavGroup__navButton--archive {
@@ -540,8 +345,8 @@ Vassar hompage and the News homepage */
 }
 .u-ArticleList__systemMessage,
 .news-no-item-message {
-    font: $fontWeightNormal 1em/1.2 $sans-serif;
-    color: $fontColor;
+    font: $fontWeightRegular 1em/1.2 $sans-serif;
+    color: $gray-dark;
     text-transform: none;
 }
 .straight-from-the-students {
@@ -551,13 +356,7 @@ Vassar hompage and the News homepage */
     color: $linkColor;
     font-weight: $fontWeightBold !important;
     text-transform: uppercase;
-    font-family: $sans-serif-condensed;
-}
-.Module__fullWidthInTheMedia {
-    h2.Module__header {
-        font-family: $sans-serif-condensed;
-        font-weight: $fontWeightMedium;
-    }
+    font-family: $sans-serif;
 }
 @media screen {
     .u-NavSite {
@@ -569,7 +368,7 @@ Vassar hompage and the News homepage */
     .u-ArticleGroup {
         margin:0 auto;
         padding: 0 4%;
-        max-width: 18em;
+        max-width: 100%;
     }
     .u-BreadCrumbs.u-BreadCrumbs--news {
         display: block;
@@ -579,16 +378,12 @@ Vassar hompage and the News homepage */
         width: 100%;
     }
     .u-lMain {
-        margin-top: 10em;
+        /* margin-top: 13em; */
     }
     .u-pageHome .u-lContent {
         max-width: 90em;
         margin: 0 auto;
     }
-    /*.u-folderOn-campus.u-newsInner,
-    .u-folderArts.u-newsInner,
-    .u-folderRegional.u-newsInner,
-    .u-folderEvents,*/
     .secondLevelNavSplit {
         .u-lAside {
             display: inherit;
@@ -609,10 +404,10 @@ Vassar hompage and the News homepage */
         }
     }
     .u-newsInner {
-        .u-pageTitle {
+        /* .u-pageTitle {
             display: none;
             visibility: hidden;
-        }
+        } */
         .u-lAside {
             .Module__title {
                 text-align: left;
@@ -649,18 +444,20 @@ Vassar hompage and the News homepage */
         .u-lMain {
             max-width: none;
             width: 100%;
-            margin: 10em auto 5%;
+            margin-left: auto;
+            margin-right: auto;
+            /* margin: 0 auto 5%;
+            margin: 13em auto 5%; */
             padding: 0 4%;
             overflow: hidden;
         }
         .u-lAside,
         .u-lContent {
             width: 100%;
-            float: none;
+            /* float: none; */
         }
     }
     .u-newsInner.u-folderArchive,
-    /*.u-newsInner.u-folderEvents,*/
     .u-newsInner.u-folderNews,
     .u-folderAll-news,
     .u-folderVassar-events,
@@ -669,12 +466,10 @@ Vassar hompage and the News homepage */
     .u-folderMultimedia,
     .u-folderClassroom-revisited,
     .u-folderReleases,
-    /*.u-folderArts,
-    .u-folderOn-campus,
-    .u-folderRegional*/ {
+    .u-folderFeatured-videos {
         .u-lContent {
             width: 100%;
-            float: none;
+            /* float: none; */
         }
         .u-pageTitle {
             display: inherit;
@@ -698,9 +493,8 @@ Vassar hompage and the News homepage */
         padding-bottom: 7.5%;
     }
     .u-ArticleListItem__thumbnail {
-        float: none;
+        /* float: none; */
         margin: 0 0 2.5% !important;
-        /* padding-bottom: 100%; */
         position: relative;
         width: 100%;
     }
@@ -748,7 +542,7 @@ Vassar hompage and the News homepage */
             overflow: hidden;
         }
         .u-ArticleFeature {
-            background-color: #f0eeed;
+            background-color: $gray-light;
             border: 1px solid rgb(116, 102, 97);
             border: 1px solid rgba(116, 102, 97, 0.3);
             margin: 0 0 10%;
@@ -769,7 +563,7 @@ Vassar hompage and the News homepage */
             margin: 0 auto;
             max-width: none;
             padding: 0 0 5% 0;
-            width: 65%;
+            width: 100%;
             &:nth-child(3) {
                 .u-ArticleListItem__link {
                     border-bottom: none;
@@ -795,19 +589,14 @@ Vassar hompage and the News homepage */
         padding: 4% 2%;
         margin: 0;
         max-width: 100%;
-        background-color: #f0eeed;
+        background: #d4cfce url(https://www.vassar.edu/assets/images/Vassar_QuadGrid-grey.png) repeat;
+        background-size: 9em;
         .u-ArticleList {
             max-width: 40em;
             margin: 0 auto;
         }
         .u-ArticleListItem {
             padding: 2%;
-        }
-        .Module__title {
-            font-size: 3rem;
-            margin: 0 25%;
-            padding: 0 0 .33em;
-            color: #746661 !important;
         }
         .u-ArticleListItem--event {
             border-radius: .2em;
@@ -904,24 +693,24 @@ Vassar hompage and the News homepage */
             display: none;
         }
         .u-ArticleListItem__title {
-            font: $fontWeightNormal 1em/1.2 $sans-serif !important;
+            font: $fontWeightRegular 1em/1.2 $sans-serif !important;
             order: 2;
-            padding-bottom: .5em;
+            padding-bottom: .2em;
         }
     }
     .u-pageInner {
         .dates {
             margin-top: .5em;
-            font-weight: $fontWeightRegular;
+            font-weight: $fontWeightLight;
             b {
-                font-weight: $fontWeightRegular !important;
+                font-weight: $fontWeightLight !important;
             }
         }
         .u-ArticleListItem__label--location {
             display: block;
             margin-bottom: .5em;
             b {
-                font-weight: $fontWeightRegular !important;
+                font-weight: $fontWeightLight !important;
             }
         }
         .dateMonth {
@@ -971,24 +760,21 @@ Vassar hompage and the News homepage */
 }
 @media all and (min-width: 37.5em) {
     .u-lMain {
-        margin-top: 8em;
+        /* margin-top: 8em;
+        margin-top: 0; */
     }
     .u-ArticleGroup {
         max-width: 45em;
         padding: 0;
     }
     .u-folderArchive,
-    /*.u-folderEvents,*/
     .u-folderAll-news,
     .u-folderAll,
     .u-folderVassar-events,
     .u-folderVassar-everywhere,
     .u-folderMultimedia,
     .u-folderClassroom-revisited,
-    .u-folderReleases,
-    /*.u-folderArts,
-    .u-folderOn-campus,
-    .u-folderRegional*/ {
+    .u-folderReleases {
         .u-lContent {
             max-width: 45em;
             margin: 0 auto;
@@ -1062,12 +848,12 @@ Vassar hompage and the News homepage */
                 padding: 5%;
             }
             .u-ArticleListItem__title {
-                font-size: 2.5em;
-                font-weight: $fontWeightRegular !important;
-                font-family: $sans-serif-condensed;
-                letter-spacing: .03em;
-                text-transform: uppercase;
+                font-size: 1.5em;
+                font-weight: $fontWeightBold !important;
+                font-family: $serif;
+                letter-spacing: normal;
                 line-height: 1;
+                padding-bottom: .2em;
             }
 		}
 		.u-ArticleList {
@@ -1080,6 +866,8 @@ Vassar hompage and the News homepage */
             }
             .u-ArticleListItem__title {
                 font-weight: $fontWeightRegular !important;
+                font-family: $sans-serif;
+                font-size: 1em;
             }
 		}
         .u-ArticleListItem {
@@ -1119,7 +907,8 @@ Vassar hompage and the News homepage */
     .u-newsInner {
         .u-lMain {
             display: flex;
-            margin-top: 8em;
+            /* margin-top: 8em;
+            margin-top: 0; */
         }
         .u-lContent {
             max-width: 40em;
@@ -1144,24 +933,26 @@ Vassar hompage and the News homepage */
     .u-folderAll,
     .u-folderVassar-events,
     .u-folderVassar-everywhere,
-    /*.u-folderArts,
-    .u-folderOn-campus,
-    .u-folderRegional*/ {
+    .u-folderReleases {
         .u-lContent {
             max-width: 46em;
 			margin: 0 auto;
         }
     }
-    /*html[class*="u-folder20"] .u-lAside {
-       background:black;
-    }*/
-}
-.u-pageTitle {
-    border-bottom: 1px solid rgb(116, 102, 97);
-    border-bottom: 1px solid rgba(116, 102, 97, .3);
+    .u-folderFeatured-videos {
+        .u-lContent {
+            max-width: 100%;
+            float: none;
+            margin: 0;
+        }
+        .u-lAside {
+            display: none;
+            visibility: hidden;
+        }
+    }
 }
 .u-lHeader {
-    background: #666 url("../images/news-events-header-bg.jpg") no-repeat center;
+    background: #666 url("../images/0191-19-10-ali-main-drone-vassar-vb-2055.jpg") no-repeat top;
     background-size: cover;
 }
 .u-ArticleListItem__link {
@@ -1194,7 +985,7 @@ Vassar hompage and the News homepage */
             filter: grayscale(1);
         }
         .figure {
-          background: #861F41;
+          background: $burgundy-bright;
         }
         img {
           opacity: 0.4;
@@ -1244,82 +1035,357 @@ Vassar hompage and the News homepage */
 .Module__fullWidthInTheMedia h2.Module__header,
 .u-ArticleGroup--newsSlider-top .Module__title,
 .u-ArticleGroup--newsSlider.events .Module__title {
-    font-size: 3rem;
+    font-size: 3em;
     margin: 0 25%;
     border: none;
     padding: .75em 0 .15em;
     a, a:visited {
-        @include link-colors($fontColor, $linkColorHoverFocus, $linkColorActive, $fontColor, $linkColorHoverFocus);
-        border-bottom: 1px solid transparent;
+        @extend .title-gradient;
+        border-bottom: none;
         &:after {
             content: "\2023";
             margin-left: .25em;
             font-size: .5em;
         }
     }
-    a:hover {
-        border-bottom: 1px solid $linkColorHoverFocus;
-
-    }
+    a:hover,
     a:focus {
-        border-bottom: 1px solid $linkColorHoverFocus;
-
+        color: $linkColorHoverFocus;
+        text-transform: none;
+        background: linear-gradient(135deg, $linkColorHoverFocus 0%, $linkColorHoverFocus 70%);
+        -webkit-background-clip: text;
+        color: transparent;
     }
-    a:active {
-        border-bottom: 1px solid $linkColorActive;
-
-    }
-}
-.u-ArticleGroup--newsMediaTicker {
-    margin: 0 0 4%;
 }
 .secondLevelNavSplit {
-    .u-pageTitle {
-        display: none !important;
-        visibility: hidden !important;
-    }
     @media screen {
         .u-lMain {
-            margin: 20em auto 5% !important;
+            /* margin: 23em auto 5% !important;
+            margin: 0 auto 5% !important; */
+            margin-left: auto;
+            margin-right: auto;
         }
     }
     @media screen and (min-width: 28.12em) {
         .u-lMain {
-            margin: 12em auto 5% !important;
+            /* margin: 12em auto 5% !important;
+            margin: 0 auto 5% !important; */
         }
     }
 }
 
+/* News slider */
+.u-ArticleGroup.u-ArticleGroup--newsSlider {
+    .u-ArticleNavGroup__navButton--archive {
+        text-align: center;
+        font: normal $fontWeightRegular 1.75em/1 $sans-serif;
+        text-transform: uppercase;
+        letter-spacing: .03em;
+    }
+    .straight-from-the-students {
+        display: block;
+        font-size: 1.5em;
+        line-height: 1;
+        color: $linkColor;
+        font-weight: 600 !important;
+        text-transform: $fontWeightBold;
+        font-family: $sans-serif;
+    }
+}
+@media screen {
+    .u-ArticleGroup.u-ArticleGroup--newsSlider {
+        margin: 3% auto 0;
+        width: 100%;
+        .u-ArticleListItem__summary,
+        .u-ArticleListItem__label {
+            display: none;
+        }
+        .u-ArticleListItem__title {
+            margin: 0;
+            font: $fontWeightRegular 1.5em/1.1 $serif;
+            text-transform: none;
+            margin-bottom: .2em;
+        }
+        .u-ArticleList {
+            width: 100%;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .u-ArticleListItem {
+            margin: 0;
+            padding:1.3em;
+            width:15em;
+        }
+        .u-ArticleListItem__thumbnail {
+            position: relative;
+        }
+        .u-ArticleListItem__thumbnail img {
+            position: relative;
+        }
+        .u-ArticleListItem__thumbnail {
+            float: none;
+        }
+        .u-ArticleNavGroup {
+            position: relative;
+            width: 70%;
+            margin: 3% auto 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .u-ArticleNavGroup__navButton--archive {
+            margin: 0 auto;
+            padding: 0 0 .19em;
+            width: 3.5em;
+            float: none;
+        }
+    }
+}
+@media all and (min-width: $small) {
+    .u-ArticleGroup.u-ArticleGroup--newsSlider {
+        margin: 3% auto 0;
+    }
+}
+@media all and (min-width: 67.5em) {
+    .u-ArticleGroup.u-ArticleGroup--newsSlider {
+        .u-ArticleList {
+            flex-wrap: nowrap;
+        }
+    }
+}
+.u-ArticleGroup.u-ArticleGroup--newsSlider {   
+    .u-ArticleListItem__thumbnail {
+        margin: 0 0 2% 0 !important;
+    }
+    .u-ArticleListItem__thumbnail:after {
+        border: 1px solid rgba(116, 102, 97, 0.5);
+        bottom: 0;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .u-ArticleNavGroup__navButton--archive,
+    .Module__fullWidthFacts .moreLink {
+        background: none;
+        background-color: $linkColor;
+        color: #ff;
+        border-bottom: none !important;
+        &:visited {
+            background: none;
+            background-color: transparent;
+            color: #fff;
+            border-bottom: none !important;
+        }
+        &:hover,
+        &:focus {
+            background: none;
+            background-color: $linkColorHoverFocus;
+            color: #fff;
+            border-bottom: none !important;
+        }
+        &:active {
+            background: none;
+            background-color: $linkColorActive;
+            color: #fff;
+            border-bottom: none !important;
+        }
+    }
+}
+/* end News slider */
 
-/* video removed from admin area in CMS 10/15/2020 */
+/* In the media */
+.u-ArticleListItem--in-the-media h4.u-ArticleListItem__title {
+    font: $fontWeightRegular 1.2em/1.2 $sans-serif !important;
+}
+.Module__fullWidthInTheMedia {
+    .Module.Module--mainContent.Module--list .Module__listItem,
+    .Module.Module--mainContent.Module--list .Module__listItem a {
+        text-transform: none;
+    }
+    .Module__header {
+        display: block;
+        text-align: center;
+        font-size: 3em;
+        padding-top: 0;
+    }
+    h2.Module__header {
+        margin: 0 25%;
+        border-top: 1px solid rgba(116, 102, 97, 0.27);
+        padding: .75em 0 .15em;
+    }
+    .Module__title {
+        font-size: 1.1em;
+        display: inherit;
+        line-height: 1;
+        letter-spacing: 0;
+    }
+    .Module__listItem {
+        list-style: none;
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        border-bottom: none;
+        height: auto;
+        .Module__link {
+            .Module__title {
+                font-family: $sans-serif;
+                font-weight: $fontWeightRegular;
+                color: $linkColor;
+                &:visited {
+                    color: $linkColor;
+                }
+                &:hover,
+                &:focus {
+                    color: $linkColorHoverFocus;
+                }
+                &:active {
+                    color: $linkColor;
+                }
+            } 
+            &:link {
+                border-bottom: none;
+            }
+        }
+    }
+}
+.js {
+    .u-ArticleGroup--newsMediaTicker>ul.Module__list {
+        overflow: visible;
+        position: relative;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 9em 0 0 0;
+        max-width: 40em;
+    }
+    .u-ArticleGroup--newsMediaTicker>ul.Module__list>li {
+        display:none;
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+    }
+    .u-ArticleGroup--newsMediaTicker>ul.Module__list>li:first-child {
+        display:block
+    }
+    .items__nav {
+        .items__tabLink {
+            width:1.25em;
+            height:1.25em;
+        }    
+    }
+}
+@media all and (min-width: 21.88em) {
+    .js {
+        .u-ArticleGroup--newsMediaTicker>ul.Module__list {
+            padding: 8em 0 0 0;
+        }
+    }
+}
+@media all and (min-width: 34.38em) {
+    .js {
+        .u-ArticleGroup--newsMediaTicker>ul.Module__list {
+            padding: 6em 0 0 0;
+        }
+    }
+}
+@media all and (min-width: 46.88em) {
+    .js {
+        .u-ArticleGroup--newsMediaTicker>ul.Module__list {
+            padding: 4em 0 0 0;
+        }
+    }
+}
+@media all and (min-width: 50em) {
+    .js {
+        .u-ArticleGroup--newsMediaTicker>ul.Module__list {
+            margin: 0 auto;
+            padding: 4.5em 0 0 0;
+        }
+        .items__nav {
+            .items__tabLink {
+                width:1em;
+                height:1em;
+            }    
+        }
+    }
+}
+@keyframes fadeIn{
+    from{
+        opacity:0
+    }
+    to{
+        opacity:1
+    }
+}
+@keyframes fadeOut{
+    from{
+        opacity:1
+    }
+    to{
+        opacity:0
+    }
+}
+.items__nav {
+    margin:0 0 3em 0;
+    padding:0;
+    text-align:center;
+    .items__tab {
+        list-style:none;
+        display:inline;
+        margin:0 0.5em
+    }
+    .items__tab.active .items__tabLink {
+        background: $linkColorActive;
+    }
+    .items__tabLink {
+        background:$gray-light;
+        border-radius:50%;
+        width:1.25em;
+        height:1.25em;
+        display:inline-block;
+        overflow:hidden;
+        text-indent:-900px;
+        color:transparent;
+    }
+    a.items__tabLink {
+        border-bottom: none;
+    }
+    .items__tabLink:hover,
+    .items__tabLink:focus {
+        background:$linkColorHoverFocus;
+    }
+    .items__tabLink:active {
+        background:$linkColorActive;
+    }
+}
+/* End In the media */
 
+/* featured video  */
 ul.videoList {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* 
-    grid-template-rows: auto;
-    justify-items: stretch;
-    */
     column-gap: 1em;
     row-gap: 1em;
     list-style: none;
     padding-left: 0;
     a {
-       border: solid .1em !important;
+       border: 1px solid $linkColor !important;
         display: grid;
         grid-template: 
             "videoThumbnail"
             "videoHeader"
-            "videoCaption";
-        /* margin-bottom: 2em; */
-        /* height: 100%; */
-        line-height: 1.2;
+            /*"videoCaption"*/;
+        grid-template-rows: auto 1fr;
         padding: 1em 5% !important;
         text-decoration: none !important;
         &:hover {
-            background-color: hsl(34deg, 100%, 97%);
-            border-color: hsl(34deg, 50%, 50%);
-            color: hsl(34deg, 30%, 30%);
+            background-color: $gray-light;
+            border-color: $linkColorHoverFocus;
+            color: $linkColorHoverFocus;
             transform: scale( 1.0125 );
             transition: all .25s ease-out;
             box-shadow: 0 0 0.5em 0.25em rgb(179, 179, 179);
@@ -1327,11 +1393,11 @@ ul.videoList {
     }
     figcaption {
         strong {
-            color: #333;
+            color: $gray-dark;
             font-size: 1.05em;
         }
         em {
-            color: #333;
+            color: $gray-dark;
             font-size: .9em;
             line-height: 0 !important;
         }
@@ -1341,12 +1407,12 @@ ul.videoList {
         }
     }
     figure {
-        margin-bottom: 1em;        
+        margin-bottom: 0;        
     }
     h3 {
-        font: 600 1.25em acumin-pro, Arial, Helvetica;
+        font: $fontWeightRegular 1em $sans-serif;
         grid-area: videoHeader;
-        line-height: 1.2;
+        line-height: 1.1;
         margin: 0;
         text-transform: none;
         letter-spacing: normal;
@@ -1354,6 +1420,7 @@ ul.videoList {
     img {
         grid-area: videoThumbnail;
         width: 100%;
+        margin-bottom: .3em;        
     }
     li {
         display: flex;
@@ -1427,11 +1494,6 @@ ul.videoList {
     background-clip: padding-box;
     background-color: #1A1A1A;
     border-radius: .5em;
-    /*
-    -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
-    box-shadow: 0 3px 9px rgba(0,0,0,.5);
-    outline: 0;
-    */
     /* offset header height to vertically center modal */
     margin-top: -3.5em;
     padding: 0 1em 1em;    
@@ -1440,10 +1502,6 @@ ul.videoList {
 
 .modal-dialog
 {
-    /* position: relative; 
-    margin: 1em;
-    width: auto;
-    */
     margin: 0 auto;
     width: 90%;
 }
@@ -1475,11 +1533,6 @@ ul.videoList {
     -webkit-transition: -webkit-transform .3s ease-out;
     -o-transition: -o-transform .3s ease-out;
     transition: transform .4s ease-out;
-    /*
-    -webkit-transform: translate(0,-25%);
-    -ms-transform: translate(0,-25%);
-    -o-transform: translate(0,-25%);
-    */
     transform: translate(0,-100%);
 }
 
@@ -1537,22 +1590,7 @@ ul.videoList {
         margin: 1em auto;
         width: 60%;
     }
-/*
-    .modal-content
-    {
-        -webkit-box-shadow: 0 0 2em rgba(0,0,0,.75);
-        box-shadow: 0 0 2em rgba(0,0,0,.75);
-    }
-    */
 }
-
-/* Additional for News */
-/* .u-ArticleGroup,
-.u-lAside
-{
-    display: none;
-} */
-
 ul.videoList
 {
     grid-template-columns: 1fr;
@@ -1573,41 +1611,30 @@ ul.videoList
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
-
-.u-lContent
-{
-    max-width: none !important;
-    margin: 0 !important;
-}
-
-.u-newsInner .u-pageTitle
-{
-    display: block;
-    visibility: visible;
-}
-.u-folderMultimedia {
+.u-folderFeatured-videos {
     .modulesArea__row {
         margin-bottom: 3em;
         padding-bottom: 1em;
-        border-bottom: 1px solid #746661;
-        border-bottom: 1px solid rgba(116,102,97,0.3);
+        border-bottom: 1px solid $gray-basic;
+        /* remove after proper in-page nav installed */
+        &:first-of-type {
+            h2.Module__title,.videoGroup {
+                display: none;
+            }
+            margin-bottom: 1em;
+            padding-bottom: 0;
+            border-bottom: 0px solid transparent;
+        }
     }
-    .Module__title {
-        font-family: $sans-serif-condensed;
-        font-size: 2.75em;
-        text-transform: none;
-        letter-spacing: inherit;
-        font-weight: 300;
-    }
-    .videoList figure {
-        margin-bottom: .5em;
-    }
-    .videoLink h3 {
-        font-family: $sans-serif;
-        font-size: 1em;
-        font-weight: 500;
-    }
-    .Module__desc {
+    .Module__desc,
+    .u-pageTitle {
         max-width: 39em;
+    }
+    .u-pageTitle {
+        /*text-align: center;
+        &:after {
+            left: 50%;
+            margin-left: -1.5em;
+        }*/
     }
 }

@@ -60,3 +60,4 @@ config.codekit
 *.codekit3
 *.html
 images/
+old/

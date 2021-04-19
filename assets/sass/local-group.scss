@@ -76,7 +76,6 @@
    margin-top: -4em;
    padding-top: 4em !important;
 }
-
 @media screen and (min-width: 37.5em) {
     .u-Masthead {
         display:flex;
@@ -188,9 +187,19 @@
         float: right;
         margin-left: .33em;
     }
+    
+/* .u-NavSite__level--2
+.PageNavContainer .Row {
+    background: #fff;
+    box-shadow: 0 0.1em 0.3em rgba(0,0,0,0.2);
+}
+.PageNav {
+    border: none;
+} */ 
     .u-NavSite__level--2 {
-        background-color: $gray-light;
-        border: 1px solid $gray-border;
+        background-color: #fff;
+        box-shadow: 0 0.1em 0.3em rgba(0,0,0,0.2);
+        border: none;
         padding: .25em;
         flex-flow: wrap;
         justify-content: center;
@@ -687,7 +696,7 @@ h3.u-ExtendedFooter__listHeader {
         .dateTime,
         .dates--dayRange--current .dateStart,
         .u-ArticleListItem__label--location {
-            @include ac-hiddenVisually;
+            @include ac-hiddenVisually;    
         }
         .dateThrough {
             display: none;
@@ -736,6 +745,10 @@ h3.u-ExtendedFooter__listHeader {
         }
 		.dateYear {
 			@include ac-hiddenVisually;
+            /* visibility: visible;
+            &:before {
+                content: ", ";
+            } */
 		}
     }
     /* add to central files*/
@@ -774,7 +787,8 @@ h3.u-ExtendedFooter__listHeader {
     .u-folderVassar-everywhere,
     .u-folderMultimedia,
     .u-folderClassroom-revisited,
-    .u-folderReleases {
+    .u-folderReleases,
+    .u-pageVassarevents {
         .u-lContent {
             max-width: 45em;
             margin: 0 auto;
@@ -933,7 +947,8 @@ h3.u-ExtendedFooter__listHeader {
     .u-folderAll,
     .u-folderVassar-events,
     .u-folderVassar-everywhere,
-    .u-folderReleases {
+    .u-folderReleases,
+    .u-pageVassarevents {
         .u-lContent {
             max-width: 46em;
 			margin: 0 auto;
@@ -1637,4 +1652,90 @@ ul.videoList
             margin-left: -1.5em;
         }*/
     }
+}
+/* Vassar Events form */
+.buttonContainer,
+.VassarEventsFormContainer .button {
+	display:flex;
+	justify-content:center;
+	margin:1em 0
+}
+.button-link,
+.VassarEventsFormContainer .button {
+	background-color:$burgundy-1;
+	color:#fff !important;
+	border:1px solid #fff
+}
+.button-link:visited {
+	background-color:$burgundy-1;
+	color:#fff !important
+}
+.VassarEventsFormContainer .button:hover,
+.VassarEventsFormContainer .button:focus {
+	background-color:#c1b5b0;
+	color:#fff !important
+}
+.button-link:active,
+.VassarEventsFormContainer .button:active {
+	background-color:$gray-basic;
+	color:#fff !important
+}
+.button, 
+.VassarEventsFormContainer .button {
+	margin-top:0 !important;
+	transition:none !important
+}
+.button:link,
+.VassarEventsFormContainer .button {
+	background:$burgundy-1;
+	font-size:1.4em;
+	display:inline-block;
+	padding:0.4em 0.6em;
+	border-radius:0.4em;
+	border:none
+}
+.button:link,.button:visited{
+	color:#fff !important
+}
+.VassarEventsFormContainer .button:hover,
+.VassarEventsFormContainer .button:focus {
+	background:$gray-basic
+}
+.VassarEventsFormContainer [id] {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    .button {
+        padding-top: .4em !important;
+    }
+}
+.VassarEventsFormContainer {
+    max-width: 25em;
+    margin: 2em auto;
+    p {
+        line-height: 1.5;
+    }
+}
+.VassarEventsFormContainer {
+    margin: 2em auto;
+    .mc-field-group {
+        margin: 0 0 1em;
+        display: flex;
+        flex-direction: column;
+    }
+    .indicates-required {
+        margin: 0 0 1em;;
+    }
+    #mce-responses {
+        margin: 1em 0;
+        font-weight: 700;
+        color: #95192a;
+    }
+}
+.events-email-subscription {
+    font-size: 1.2em !important;
+    margin-bottom: 2em !important;
+}
+/*MG 4/1 Daria req; hide posted by on all pages except u-folderReleases*/
+.u-newsInner:not(.u-folderReleases) .u-ArticleListItem__label--dateline {
+    display:none;    
 }

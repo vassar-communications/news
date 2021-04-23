@@ -1670,11 +1670,6 @@ ul.videoList
 	background-color:$burgundy-1;
 	color:#fff !important
 }
-.VassarEventsFormContainer .button:hover,
-.VassarEventsFormContainer .button:focus {
-	background-color:#c1b5b0;
-	color:#fff !important
-}
 .button-link:active,
 .VassarEventsFormContainer .button:active {
 	background-color:$gray-basic;
@@ -1698,8 +1693,11 @@ ul.videoList
 	color:#fff !important
 }
 .VassarEventsFormContainer .button:hover,
-.VassarEventsFormContainer .button:focus {
-	background:$gray-basic
+.VassarEventsFormContainer .button:focus,
+.events-email-subscription:hover,
+.events-email-subscription:focus {
+	background-color:$gray-basic;
+	color:#fff !important
 }
 .VassarEventsFormContainer [id] {
     margin-top: 0 !important;
